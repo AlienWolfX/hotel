@@ -21,3 +21,4 @@ yarn-error.log
 /.zed
 
 .vercel
+*.mp4

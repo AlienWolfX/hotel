@@ -40,13 +40,9 @@ class HomeController extends Controller
     public function login_home()
     {
         $room = Room::all();
-
         $gallery = Gallery::all();
-
         $user = Auth::user();
-
         $userid = $user->id;
-
 
         return view('home.index', compact('room', 'gallery'));
     }

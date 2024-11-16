@@ -17,20 +17,22 @@
                     <div class="p-4 mt-2">
                         <div class="d-flex justify-content-between mb-3">
                             <h5 class="mb-0">{{$rooms->room_title}}</h5>
-                           
                         </div>
-                        
-                        <p class="text-body mb-3">{!! Str::limit($rooms->description,100)!!}</p>
+                        <p class="text-body mb-3">{!! Str::limit($rooms->description,100) !!}</p>
                         <div class="d-flex justify-content-between">
-                            <a class="btn btn-sm btn-dark rounded py-2 px-4" href="{{url('room_details',$rooms->id)}}">Room Detail</a>
-    
+                            <a class="btn btn-sm btn-dark rounded py-2 px-4" href="{{url('room_details', $rooms->id)}}">Room Detail</a>
+                            @if($rooms->hasVideo)
+                                <a class="btn btn-sm btn-primary rounded py-2 px-4" href="{{url('tour', $rooms->id)}}">Virtual Tour</a>
+                            @else
+                                <span class="btn btn-sm btn-secondary rounded py-2 px-4">No Virtual Tour</span>
+                            @endif
                         </div>
                     </div>
                 </div>
             </div>
             @endforeach
-            
-           
+
+
         </div>
     </div>
 </div>
