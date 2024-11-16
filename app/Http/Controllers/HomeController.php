@@ -163,7 +163,9 @@ class HomeController extends Controller
 
         $request->validate([
             'startDate' => 'required|date',
-
+            'email' => 'required|email',
+            'phone' => 'required',
+            'name' => 'required',
             'endDate' => 'date|after:startDate',
         ]);
 
