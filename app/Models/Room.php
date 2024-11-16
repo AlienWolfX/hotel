@@ -15,11 +15,21 @@ class Room extends Model
         'description',
         'wifi',
         'room_type',
-        'hasVideo',
+        'has_video',
     ];
 
     public function videos()
     {
         return $this->hasMany(Video::class);
+    }
+
+    public function bookings()
+    {
+        return $this->hasMany(Booking::class);
+    }
+
+    public function isBooked()
+    {
+        return Booking::where('room_id', $this->id)->exists();
     }
 }

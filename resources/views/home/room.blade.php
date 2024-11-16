@@ -13,6 +13,11 @@
                     <div class="position-relative">
                         <img class="img-fluid" style="height: 200px; width: 400px" src="room/{{$rooms->image}}" alt="">
                         <small class="position-absolute start-0 top-100 translate-middle-y bg-primary text-white rounded py-1 px-3 ms-4">₱ {{$rooms->price}}</small>
+                        @if($rooms->isBooked())
+                            <small class="position-absolute start-0 top-0 translate-middle-y bg-danger text-white rounded py-1 px-3 ms-4 mt-2">Already Booked</small>
+                        @else
+                            <small class="position-absolute start-0 top-0 translate-middle-y bg-success text-white rounded py-1 px-3 ms-4 mt-2">Available</small>
+                        @endif
                     </div>
                     <div class="p-4 mt-2">
                         <div class="d-flex justify-content-between mb-3">
