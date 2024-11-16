@@ -6,8 +6,8 @@
       <div class="avatar"><img src="{{asset('admincss/img/avatar-6.jpg')}}" alt="..." class="img-fluid rounded-circle">
       </div>
       <div class="title">
-        <h1 class="h5">Mark Stephen</h1>
-        <p>Web Designer</p>
+        <h1 class="h5">{{ auth()->user()->name }}</h1>
+        <p>Admin</p>
       </div>
     </div>
     <!-- Sidebar Navidation Menus-->
@@ -18,7 +18,7 @@
         <a href="{{url('admin_home')}}"> <i class="icon-home"></i>Home </a>
       </li>
 
-      
+
       <li class="{{ Request::is('create_room') || Request::is('view_room') ? 'active' : '' }}">
 
         <a href="#exampledropdownDropdown" aria-expanded="false" data-toggle="collapse">
@@ -31,6 +31,10 @@
 
           <li class="{{ Request::is('view_room') ? 'active' : '' }}">
             <a href="{{url('view_room')}}">View Rooms</a>
+          </li>
+
+          <li class="{{ Request::is('virtual_tour') ? 'active' : '' }}">
+            <a href="{{url('virtual_tour')}}">Virtual Tour</a>
           </li>
 
         </ul>

@@ -15,7 +15,11 @@ class Room extends Model
         'description',
         'wifi',
         'room_type',
-        
-       
+        'hasVideo',
     ];
+
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
+    }
 }

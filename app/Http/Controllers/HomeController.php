@@ -56,6 +56,11 @@ class HomeController extends Controller
         return view('admin.create_room');
     }
 
+    public function virtual_tour()
+    {
+        return view('admin.virtual_tour');
+    }
+
     public function add_room(Request $request)
     {
         $data = new Room;
