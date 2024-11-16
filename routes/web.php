@@ -108,10 +108,6 @@ Route::get('/my_bookings', [HomeController::class, 'my_bookings'])
     ->middleware(['auth'])
     ->name('home.bookings');
 
-    Route::get('/email/verify', function () {
-        return view('auth.verify-email');
-    })->middleware('auth')->name('verification.notice');
-
 Route::controller(PaymentController::class)->group(function(){
     Route::get('/pay/{id}', 'pay');
 });
