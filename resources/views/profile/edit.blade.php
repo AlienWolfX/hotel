@@ -1,7 +1,10 @@
 <x-app-layout>
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Profile') }}
+            <a href="{{ url('/') }}" class="text-gray-800 mr-2">
+                <i><</i>
+            </a>
+            {{ __(auth()->user()->name . ' Profile') }}
         </h2>
     </x-slot>
 

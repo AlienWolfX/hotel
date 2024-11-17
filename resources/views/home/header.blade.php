@@ -9,16 +9,16 @@
                 </div>
                 <!-- Brand Name -->
                 <div>
-                      <h1 class="m-0 text-primary text-uppercase hotel-name">Mt.Bagarabon<br>Hotel</h1>  
-               </div>                    
+                      <h1 class="m-0 text-primary text-uppercase hotel-name">Mt.Bagarabon<br>Hotel</h1>
+               </div>
             </a>
         </div>
 
         <!-- Right Navbar and Links -->
         <div class="col-lg-9">
             <!-- Contact Information -->
-           
-              
+
+
 
             <!-- Navbar Links Section -->
             <nav class="navbar navbar-expand-lg bg-dark navbar-dark p-3 p-lg-0">
@@ -33,23 +33,28 @@
                         <a href="{{url('homes')}}" class="nav-item nav-link">Home</a>
                         <a href="{{url('about_us')}}" class="nav-item nav-link">About</a>
                         <a href="{{url('our_rooms')}}" class="nav-item nav-link">Rooms</a>
-                        <a href="{{url('services')}}" class="nav-item nav-link">Services</a>           
                         <a href="{{url('hotel_gallery')}}" class="nav-item nav-link">Gallery</a>
-                        <a href="{{url('my_bookings')}}" class="nav-item nav-link">My Booking</a>      
+                        <a href="{{url('my_bookings')}}" class="nav-item nav-link">My Booking</a>
                         <a href="{{url('contact_us')}}" class="nav-item nav-link">Contact</a>
                     </div>
                     <div class="navbar-nav">
                         @if (Route::has('login'))
                             @auth
-                                <form style="padding: 20px" method="POST" action="{{ route('logout') }}">
-                                    @csrf
-                                    <input class="btn btn-success" type="submit" value="Logout">
-                                </form>
+                                <div class="d-flex align-items-center">
+                                    <input class="btn btn-success" type="submit" value="{{ auth()->user()->name }}">
+                                    <a class="btn btn-secondary ms-2" href="{{ url('profile') }}">
+                                        <i class="fas fa-edit"></i>
+                                    </a>
+                                    <form style="padding: 20px" method="POST" action="{{ route('logout') }}">
+                                        @csrf
+                                        <input class="btn btn-danger" type="submit" value="Logout">
+                                    </form>
+                                </div>
                             @else
                                 <a href="{{url('/login')}}" class="nav-item nav-link"><i class="fa fa-user me-2"></i>Login</a>
                                 <a href="{{url('/register')}}" class="nav-item nav-link"><i class="fa fa-user-plus me-2"></i>Register</a>
                             @endauth
-                        @endif 
+                        @endif
                     </div>
                 </div>
             </nav>
@@ -114,4 +119,4 @@
             }
         });
     });
-</script>  
+</script>

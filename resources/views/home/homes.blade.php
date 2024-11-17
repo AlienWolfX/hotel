@@ -35,21 +35,10 @@
         @include('home.room')
         <!-- Room End -->
 
-
-        <!-- Video Start -->
-        @include('home.video')
-        <!-- Video Start -->
-
-
         <!-- Gallery Start -->
         @include('home.gallery')
         <!-- Gallery End -->
-
-
-        <!-- Service Start -->
-        @include('home.service')
     </div>
-    <!-- Service End -->
 
 
     <!-- Contacts Start -->

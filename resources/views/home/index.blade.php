@@ -36,26 +36,19 @@
         <!-- Room End -->
 
 
-        <!-- Video Start -->
+        {{-- <!-- Video Start -->
         @include('home.video')
-        <!-- Video Start -->
+        <!-- Video Start --> --}}
 
 
         <!-- Gallery Start -->
         @include('home.gallery')
         <!-- Gallery End -->
 
-
-        <!-- Service Start -->
-        @include('home.service')
+        <!-- Contacts Start -->
+        @include('home.contacts')
+        <!-- Contacts End -->
     </div>
-    <!-- Service End -->
-
-
-    <!-- Contacts Start -->
-    @include('home.contacts')
-    <!-- Contacts End -->
-
 
     <!-- Footer Start -->
     @include('home.footer')
