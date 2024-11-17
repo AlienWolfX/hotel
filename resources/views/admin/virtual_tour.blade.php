@@ -98,7 +98,7 @@
                                     <td>{{ $video->url }}</td>
                                     <td>
                                         <div class="d-flex">
-                                            <form action="{{ route('videos.destroy', $video->id) }}" method="POST">
+                                            <form action="{{ route('virtual_tour.destroy', $video->id) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>

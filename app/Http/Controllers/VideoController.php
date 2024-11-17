@@ -42,7 +42,7 @@ class VideoController extends Controller
             $file = $request->file('video');
             $room = Room::find($request->room_id);
             $fileName = str_replace(' ', '_', $room->room_title) . '.' . $file->getClientOriginalExtension();
-            $file->move('videos', $fileName);
+            $file->move('storage/videos', $fileName);
             $video->url = $fileName;
         }
 
@@ -67,7 +67,7 @@ class VideoController extends Controller
             $room = Room::find($request->room_id);
             $fileName = str_replace(' ', '_', $room->room_title) . '.' . $file->getClientOriginalExtension();
 
-            if (file_exists(public_path('videos/' . $fileName))) {
+            if (file_exists(public_path('storage/videos/' . $fileName))) {
                 return redirect()->back()->with('error', 'A file with the same name already exists.');
             }
             $file->move('videos', $fileName);
@@ -88,7 +88,7 @@ class VideoController extends Controller
 
     public function destroy(Video $video)
     {
-        $filePath = public_path('videos/' . $video->url);
+        $filePath = public_path('storage/videos/' . $video->url);
         if (file_exists($filePath)) {
             unlink($filePath);
         }
