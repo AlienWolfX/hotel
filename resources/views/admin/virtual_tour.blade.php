@@ -7,30 +7,97 @@
         label {
             display: inline-block;
             width: 200px;
+            font-weight: bold;
+            color: #fff;
         }
 
         .div_deg {
-            padding-top: 30px;
+            padding-top: 20px;
         }
 
-        .div_center {
-            text-align: center;
-            padding-top: 40px;
+        .form-container {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            color: #fff;
+        }
+
+        input[type="text"],
+        input[type="file"],
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #555;
+            color: #fff;
+        }
+
+        .btn-primary {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn-primary:hover {
+            background-color: #45a049;
         }
 
         h1 {
-            font-size: 30px;
-            font-weight: bold;
+            text-align: center;
+            color: #fff;
         }
 
-        /* Specific text color changes */
-        h1,
-        label[for="title"],
-        label[for="video"],
-        label[for="room_id"],
-        .div_center h1,
-        .div_deg label {
-            color: rgb(255, 253, 253);
+        .table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .table tr:hover {
+            background-color: #ddd;
+        }
+
+        .btn-danger {
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-warning {
+            background-color: #f39c12;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .btn-warning.ml-2 {
+            margin-left: 10px;
         }
     </style>
 </head>
@@ -42,44 +109,34 @@
     <div class="page-content">
         <div class="page-header">
             <div class="container-fluid">
-                <div class="div_center">
-                    <h1 style="color: rgb(255, 255, 255);">Virtual Tour</h1>
-                </div>
-                <div class="div_deg">
+                <div class="form-container">
+                    <h1>Virtual Tour</h1>
                     <h1>Add Video</h1>
                     <form action="{{ route('virtual_tour.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                        <div class="form-group row">
-                            <label for="title" class="col-sm-2 col-form-label">Title:</label>
-                            <div class="col-sm-10">
-                                <input type="text" class="form-control" id="title" name="title" required>
-                            </div>
+                        <div class="div_deg">
+                            <label for="title">Title:</label>
+                            <input type="text" id="title" name="title" required>
                         </div>
-                        <div class="form-group row">
-                            <label for="video" class="col-sm-2 col-form-label">Video:</label>
-                            <div class="col-sm-10">
-                                <input type="file" class="form-control" id="video" name="video" required>
-                            </div>
+                        <div class="div_deg">
+                            <label for="video">Video:</label>
+                            <input type="file" id="video" name="video" required>
                         </div>
-                        <div class="form-group row">
-                            <label for="room_id" class="col-sm-2 col-form-label">Room:</label>
-                            <div class="col-sm-10">
-                                <select class="form-control" id="room_id" name="room_id" required>
-                                    <option value="" disabled selected>Select Room</option>
-                                    @foreach ($rooms as $room)
-                                        <option value="{{ $room->id }}">{{ $room->room_title }}</option>
-                                    @endforeach
-                                </select>
-                            </div>
+                        <div class="div_deg">
+                            <label for="room_id">Room:</label>
+                            <select id="room_id" name="room_id" required>
+                                <option value="" disabled selected>Select Room</option>
+                                @foreach ($rooms as $room)
+                                    <option value="{{ $room->id }}">{{ $room->room_title }}</option>
+                                @endforeach
+                            </select>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-sm-10 offset-sm-2">
-                                <button type="submit" class="btn btn-primary">Add Video</button>
-                            </div>
+                        <div class="div_deg">
+                            <button type="submit" class="btn btn-primary">Add Video</button>
                         </div>
                     </form>
                 </div>
-                <div class="div_deg">
+                <div class="form-container">
                     <h1>Videos</h1>
                     <table class="table">
                         <thead>
@@ -103,7 +160,7 @@
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
-                                            <a href="{{ route('virtual_tour.update', $video->id) }}" class="btn btn-warning ml-2">Edit</a>
+                                            <a href="{{ route('virtual_tour.edit', $video->id) }}" class="btn btn-warning ml-2">Edit</a>
                                         </div>
                                     </td>
                                 </tr>

@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Nofication;
+
 use App\Models\Room;
+
+use App\Models\User;
 
 use App\Models\Booking;
 
@@ -13,10 +17,7 @@ use App\Models\Gallery;
 use Illuminate\Http\Request;
 
 use App\Notifications\MyFirstNotification;
-
 use Illuminate\Support\Facades\Notification;
-
-use Nofication;
 
 class AdminController extends Controller
 {
@@ -124,14 +125,14 @@ class AdminController extends Controller
 
         return view('admin.send_mail', compact('data'));
     }
-        
-    
+
+
     public function mail(Request $request, $id)
     {
         $data = Contact::find($id);
 
         $details = [
-               
+
             'greeting' => $request->greeting ,
 
             'body' => $request->body ,
@@ -154,6 +155,42 @@ class AdminController extends Controller
 
     }
 
+    // Managing Users
+
+    public function manageUserIndex()
+    {
+        $users = User::all();
+
+        return view('admin.manage_users',compact('users'));
+        // return view('admin.manage_users');
+
+    }
+
+    public function manageUserDelete($id)
+    {
+        $user = User::find($id);
+        $user->delete();
+        toastr()->closeButton()->success('User Deleted Successfully');
+        return redirect()->back();
+    }
+
+    public function manageUserEdit($id)
+    {
+        $user = User::find($id);
+        return view('admin.edit_user',compact('user'));
+    }
+
+    public function manageUserUpdate(Request $request, $id)
+    {
+        $user = User::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->phone = $request->phone;
+        $user->usertype = $request->usertype;
+        $user->save();
+        toastr()->closeButton()->success('User Updated Successfully');
+        return redirect()->route('manage_users.index');
+    }
 
     public function admin_home()
     {

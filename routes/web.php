@@ -33,9 +33,15 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/mail/{id}', [AdminController::class, 'mail']);
     Route::get('/admin_home', [AdminController::class, 'admin_home']);
 
+    // Managing users
+    Route::get('/manage_users', [AdminController::class, 'manageUserIndex'])->name('manage_users.index');
+    Route::delete('/manage_users/{id}', [AdminController::class, 'manageUserDelete'])->name('manage_users.destroy');
+    Route::get('/manage_users/{id}', [AdminController::class, 'manageUserEdit'])->name('manage_users.edit');
+    Route::put('/manage_users/{id}', [AdminController::class, 'manageUserUpdate'])->name('manage_users.update');
+
     // Virtual Tour CRUD for admin
     Route::get('/virtual_tour/update/{id}', [VideoController::class, 'updateVideo'])->name('virtual_tour.update');
-    Route::post('/virtual_tour/edit/{id}', [VideoController::class, 'edit']);
+    Route::post('/virtual_tour/edit/{id}', [VideoController::class, 'edit'])->name('virtual_tour.edit');
     Route::get('/virtual_tour', [VideoController::class, 'index'])->name('virtual_tour.index');
     Route::post('/virtual_tour/store', [VideoController::class, 'store'])->name('virtual_tour.store');
     Route::delete('/virtual_tour/{video}', [VideoController::class, 'destroy'])->name('virtual_tour.destroy');

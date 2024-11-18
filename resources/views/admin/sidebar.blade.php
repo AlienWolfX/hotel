@@ -45,6 +45,9 @@
         <a href="{{url('bookings')}}"> <i class="icon-layers"></i>Bookings </a>
       </li>
 
+      <li class="{{ Request::is('manage_users') ? 'active' : '' }}">
+        <a href="{{url('manage_users')}}"> <i class="icon-layers"></i>Manage Users </a>
+      </li>
 
       <li class="{{ Request::is('view_gallery') ? 'active' : '' }}">
         <a href="{{url('view_gallery')}}"> <i class="icon-presentation-1"></i>Gallery</a>

@@ -1,36 +1,66 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     @include('admin.css')
+
     <style>
         label {
             display: inline-block;
             width: 200px;
+            font-weight: bold;
+            color: #fff;
         }
 
         .div_deg {
-            padding-top: 30px;
+            padding-top: 20px;
         }
 
-        .div_center {
-            text-align: center;
-            padding-top: 40px;
+        .form-container {
+            width: 50%;
+            margin: 0 auto;
+            background-color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            color: #fff;
         }
 
-        /* Specific text color changes */
-        h1, 
-        label[for="title"],
-        label[for="description"],
-        label[for="price"],
-        label[for="type"],
-        label[for="wifi"],
-        label[for="image"],
-        .div_center h1,
-        .div_deg label {
+        input[type="text"],
+        input[type="number"],
+        textarea,
+        select,
+        input[type="file"] {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #555;
+            color: #fff;
+        }
+
+        .btn-primary {
+            background-color: #4CAF50;
             color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+        .btn-primary:hover {
+            background-color: #45a049;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
         }
     </style>
 </head>
+
 <body>
     @include('admin.header')
     @include('admin.sidebar')
@@ -38,40 +68,40 @@
     <div class="page-content">
         <div class="page-header">
             <div class="container-fluid">
-                <div class="div_center">
-                    <h1 style="color: white;">Add Rooms</h1>
+                <div class="form-container">
+                    <h1>Add Rooms</h1>
                     <form action="{{url('add_room')}}" method="Post" enctype="multipart/form-data">
                         @csrf
                         <div class="div_deg">
-                            <label style="color: white;">Room Title</label>
-                            <input type="text" name="title">
+                            <label for="title">Room Title</label>
+                            <input type="text" name="title" id="title" required>
                         </div>
                         <div class="div_deg">
-                            <label style="color: white;">Description</label>
-                            <textarea name="description"></textarea>
+                            <label for="description">Description</label>
+                            <textarea name="description" id="description" required></textarea>
                         </div>
                         <div class="div_deg">
-                            <label style="color: white;">Price</label>
-                            <input type="number" name="price">
+                            <label for="price">Price</label>
+                            <input type="number" name="price" id="price" required>
                         </div>
                         <div class="div_deg">
-                            <label style="color: white;">Room Type</label>
-                            <select name="type">
+                            <label for="type">Room Type</label>
+                            <select name="type" id="type" required>
                                 <option selected value="Family Room">Family Room</option>
                                 <option value="Double Room">Double Room</option>
                                 <option value="Triple Room">Triple Room</option>
                             </select>
                         </div>
                         <div class="div_deg">
-                            <label style="color: white;">Free Wifi</label>
-                            <select name="wifi">
+                            <label for="wifi">Free Wifi</label>
+                            <select name="wifi" id="wifi" required>
                                 <option selected value="yes">Yes</option>
                                 <option value="no">No</option>
                             </select>
                         </div>
                         <div class="div_deg">
-                            <label style="color: white;">Upload Image</label>
-                            <input type="file" name="image">
+                            <label for="image">Upload Image</label>
+                            <input type="file" name="image" id="image" required>
                         </div>
                         <div class="div_deg">
                             <input class="btn btn-primary" type="submit" value="Add Room">
@@ -91,4 +121,5 @@
     <script src="{{asset('/admincss/js/charts-home.js')}}"></script>
     <script src="{{asset('/admincss/js/front.js')}}"></script>
 </body>
+
 </html>
