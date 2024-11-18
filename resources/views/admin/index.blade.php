@@ -14,7 +14,7 @@
       <div class="page-header">
         <div class="container-fluid">
 
-            @include('admin.footer', ['userCount' => $userCount, 'roomCount' => $roomCount, 'pendingBookingsCount' => $pendingBookingsCount, 'userCount' => $userCount, 'pendingBookingsCount' => $pendingBookingsCount, 'availableRooms' => $availableRooms])
+            @include('admin.footer', ['userCount' => $userCount, 'roomCount' => $roomCount, 'pendingBookingsCount' => $pendingBookingsCount, 'userCount' => $userCount, 'pendingBookingsCount' => $pendingBookingsCount])
 
         </div>
       </div>

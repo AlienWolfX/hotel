@@ -29,8 +29,7 @@ class HomeController extends Controller
         $userCount = User::where('usertype', 'user')->count();
         $roomCount = Room::all()->count();
         $pendingBookingsCount = Booking::where('status', 'pending')->count();
-        $availableRooms = Room::whereDoesntHave('bookings')->count();
-        return view('admin.index', compact('userCount', 'roomCount', 'pendingBookingsCount', 'availableRooms'));
+        return view('admin.index', compact('userCount', 'roomCount', 'pendingBookingsCount'));
     }
 
     public function home()

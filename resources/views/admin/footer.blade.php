@@ -34,21 +34,6 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="statistic-block block">
-                    <div class="progress-details d-flex align-items-end justify-content-between">
-                        <div class="title">
-                            <div class="icon"></div><strong>Available Rooms</strong>
-                        </div>
-                        <div class="number dashtext-1">{{ $availableRooms }}</div>
-                    </div>
-                    <div class="progress progress-template">
-                        <div role="progressbar" style="width: {{ $availableRooms }}%" aria-valuenow="{{ $availableRooms }}"
-                            aria-valuemin="0" aria-valuemax="100" class="progress-bar progress-bar-template dashbg-1">
-                        </div>
-                    </div>
-                </div>
-            </div>
             <div class="col-lg-4">
                 <div class="stats-with-chart-2 block">
                     <div class="title"><strong class="d-block">Pending Bookings</strong></div>
