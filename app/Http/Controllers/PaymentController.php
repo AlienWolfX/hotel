@@ -27,7 +27,8 @@ class PaymentController extends Controller
                     'attributes' => [
                         'amount' => $price * 100, // PayMongo expects the amount in cents
                         'description' => 'Payment for ' . $roomTitle,
-                        'currency' => 'PHP'
+                        'currency' => 'PHP',
+                        'send_email_receipt' => true,
                     ]
                 ]
             ]),
