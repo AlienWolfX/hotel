@@ -1,22 +1,22 @@
+<!-- admin_home.blade.php -->
 <!DOCTYPE html>
 <html>
-  <head> 
+  <head>
     @include('admin.css')
   </head>
   <body>
 
     @include('admin.header')
 
-   @include('admin.sidebar')
-      <!-- Sidebar Navigation end-->
-      <div class="page-content">
-        <div class="page-header">
-          <div class="container-fluid">
-           
+    @include('admin.sidebar')
+    <!-- Sidebar Navigation end-->
+    <div class="page-content">
+      <div class="page-header">
+        <div class="container-fluid">
 
-            @include('admin.footer')
+          @include('admin.footer', ['userCount' => $userCount, 'roomCount' => $roomCount, 'pendingBookingsCount' => $pendingBookingsCount, 'userCount' => $userCount, 'pendingBookingsCount' => $pendingBookingsCount, 'availableRooms' => $availableRooms])
 
-          </div>
+        </div>
       </div>
     </div>
 
@@ -29,8 +29,7 @@
     <script src="{{asset('/admincss/vendor/jquery-validation/jquery.validate.min.js')}}"></script>
     <script src="{{asset('/admincss/js/charts-home.js')}}"></script>
     <script src="{{asset('/admincss/js/front.js')}}"></script>
-     <!-- JavaScript files End-->
-
+    <!-- JavaScript files End-->
 
   </body>
 </html>

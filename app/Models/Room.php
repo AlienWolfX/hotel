@@ -32,4 +32,5 @@ class Room extends Model
     {
         return Booking::where('room_id', $this->id)->exists();
     }
+
 }

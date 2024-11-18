@@ -194,7 +194,11 @@ class AdminController extends Controller
 
     public function admin_home()
     {
-        return view('admin.admin_home');
+        $userCount = User::where('usertype', 'user')->count();
+        $roomCount = Room::all()->count();
+        $pendingBookingsCount = Booking::where('status', 'pending')->count();
+        $availableRooms = Room::whereDoesntHave('bookings')->count();
+        return view('admin.admin_home', compact('userCount', 'roomCount', 'pendingBookingsCount', 'availableRooms'));
     }
 
 

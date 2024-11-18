@@ -4,19 +4,20 @@ namespace App\Http\Controllers;
 
 use id;
 
+use Stripe;
+
 use App\Models\Room;
 
-use App\Models\Booking;
+use App\Models\User;
 
+use App\Models\Booking;
 use App\Models\Contact;
 
 use App\Models\Gallery;
-use Illuminate\Http\Request;
 
-use Illuminate\Support\Facades\Auth;
-
-use Stripe;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\RedirectResponse;
 
 
@@ -25,7 +26,11 @@ class HomeController extends Controller
 {
     public function index()
     {
-        return view('admin.index');
+        $userCount = User::where('usertype', 'user')->count();
+        $roomCount = Room::all()->count();
+        $pendingBookingsCount = Booking::where('status', 'pending')->count();
+        $availableRooms = Room::whereDoesntHave('bookings')->count();
+        return view('admin.index', compact('userCount', 'roomCount', 'pendingBookingsCount', 'availableRooms'));
     }
 
     public function home()
