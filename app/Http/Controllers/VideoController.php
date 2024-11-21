@@ -56,7 +56,7 @@ class VideoController extends Controller
     {
         $request->validate([
             'title' => 'required|string',
-            'video' => 'required|file|mimes:mp4,mov,ogg,qt|max:20000',
+            'video' => 'required|file|mimes:mp4,mov,ogg,qt|max:204800', // Increased to 200MB
             'room_id' => 'required|exists:rooms,id',
         ]);
 
@@ -67,8 +67,8 @@ class VideoController extends Controller
             $room = Room::find($request->room_id);
             $fileName = str_replace(' ', '_', $room->room_title) . '.' . $file->getClientOriginalExtension();
 
-            if (file_exists(public_path('storage/videos/' . $fileName))) {
-                return redirect()->back()->with('error', 'A file with the same name already exists.');
+            if (file_exists(public_path('videos/' . $fileName))) {
+                return redirect()->back()->with('error', 'Room already has a video. Please use edit Instead.');
             }
             $file->move('videos', $fileName);
 
@@ -88,7 +88,7 @@ class VideoController extends Controller
 
     public function destroy(Video $video)
     {
-        $filePath = public_path('storage/videos/' . $video->url);
+        $filePath = public_path('videos/' . $video->url);
         if (file_exists($filePath)) {
             unlink($filePath);
         }
@@ -102,6 +102,6 @@ class VideoController extends Controller
             $room->save();
         }
 
-        return redirect()->route('virtual_tour.index')->with('success', 'Video deleted successfully.');
+        return redirect()->route('virtual_tour.index')->with('success', 'Video deleted successfully.')->with('filePath', $filePath);
     }
 }
