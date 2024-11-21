@@ -112,8 +112,20 @@
                 <div class="form-container">
                     <h1>Virtual Tour</h1>
                     <h1>Add Video</h1>
+
                     <form action="{{ route('virtual_tour.store') }}" method="POST" enctype="multipart/form-data">
                         @csrf
+
+                        @if ($errors->any())
+                            <div class="alert alert-danger">
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
+
                         <div class="div_deg">
                             <label for="title">Title:</label>
                             <input type="text" id="title" name="title" required>
@@ -160,7 +172,7 @@
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger">Delete</button>
                                             </form>
-                                            <a href="{{ route('virtual_tour.edit', $video->id) }}" class="btn btn-warning ml-2">Edit</a>
+                                            <a href="{{ route('virtual_tour.update', $video->id) }}" class="btn btn-warning ml-2">Edit</a>
                                         </div>
                                     </td>
                                 </tr>

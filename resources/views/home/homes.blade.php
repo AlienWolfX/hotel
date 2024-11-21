@@ -38,13 +38,12 @@
         <!-- Gallery Start -->
         @include('home.gallery')
         <!-- Gallery End -->
+
+        <!-- Contacts Start -->
+        @include('home.contacts')
+        <!-- Contacts End -->
+
     </div>
-
-
-    <!-- Contacts Start -->
-    @include('home.contacts')
-    <!-- Contacts End -->
-
 
     <!-- Footer Start -->
     @include('home.footer')
